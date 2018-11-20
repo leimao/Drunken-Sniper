@@ -86,6 +86,10 @@ You can never actuall win. Kill as many enemies as you can!
 
 You killed a friend, or you were killed by an enemy.
 
+### Recommendation
+
+It is also recommended that you listen to this [song](https://www.youtube.com/watch?v=S92l0x_iFZU) while you are playing.
+
 
 ## Usage
 
