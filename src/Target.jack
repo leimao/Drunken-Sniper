@@ -1,0 +1,364 @@
+
+class Target {
+
+    // Type of target
+    // 0: Enemy; 1: Friend
+    field int type;
+    field int x, y;
+    field int speed;
+    field int direction;
+    field int height;
+    field int width;
+    // Visibility
+    field boolean visibility;
+    // Some useful constants
+    field int xs;
+    field int ys;
+    // Window upper bound
+    field int y1;
+    // Window lower bound
+    field int y2;
+    // Window left bound
+    field int x1;
+    // Window right bound
+    field int x2;
+
+    constructor Target new(int Atype, int Ax, int Ay, int Aspeed, int Adirection, int Ax1, int Ax2, int Ay1, int Ay2, int Avisibility) {
+        let type = Atype;
+        let x = Ax;
+        let y = Ay;
+        let speed = Aspeed;
+        let direction = Adirection;
+        let height = 21;
+        let width = 21;
+        let xs = (width - 1) / 2;
+        let ys = (height - 1) / 2;
+
+        let x1 = Ax1;
+        let x2 = Ax2;
+        let y1 = Ay1;
+        let y2 = Ay2;
+
+        let visibility = Avisibility;
+
+        //do draw();
+
+        return this;
+
+    }
+
+    method void draw() {
+        if (type = 0) {
+            do drawEnemy();
+        }
+        else {
+            do drawFriend();
+        }
+        return;
+    }
+
+    method void erase() {
+        if (type = 0) {
+            do eraseEnemy();
+        }
+        else {
+            do eraseFriend();
+        }
+        return;
+    }
+
+    method void drawEnemy() {
+        var int c1;
+        var int c2;
+        var int c3;
+        var int c4;
+        if (visibility) {
+            let c1 = max(x-xs, x1);
+            let c2 = max(y-ys, y1);
+            let c3 = min(x+xs, x2);
+            let c4 = min(y+ys, y2);
+            if ((c1 > (x1 - 1)) & (c1 < (x2 + 1)) & (c3 > (x1 - 1)) & (c3 < (x2 + 1)) & (c2 > (y1 - 1)) & (c2 < (y2 + 1)) & (c4 > (y1 - 1)) & (c4 < (y2 + 1))) {
+                do Screen.setColor(true);
+                do Screen.drawRectangle(c1, c2, c3, c4);
+            }
+        }
+        return;
+    }
+
+    method void eraseEnemy() {
+        var int c1;
+        var int c2;
+        var int c3;
+        var int c4;
+        if (visibility) {
+            let c1 = max(x-xs, x1);
+            let c2 = max(y-ys, y1);
+            let c3 = min(x+xs, x2);
+            let c4 = min(y+ys, y2);
+            if ((c1 > (x1 - 1)) & (c1 < (x2 + 1)) & (c3 > (x1 - 1)) & (c3 < (x2 + 1)) & (c2 > (y1 - 1)) & (c2 < (y2 + 1)) & (c4 > (y1 - 1)) & (c4 < (y2 + 1))) {
+                do Screen.setColor(false);
+                do Screen.drawRectangle(c1, c2, c3, c4);
+            }
+        }
+        return;
+    }
+
+    method void drawFriend() {
+        var int c1;
+        var int c2;
+        var int c3;
+        var int c4;
+        if (visibility) {
+            let c1 = max(x-xs, x1);
+            let c2 = max(y-ys, y1);
+            let c3 = min(x+xs, x2);
+            let c4 = min(y+ys, y2);
+            if ((c1 > (x1 - 1)) & (c1 < (x2 + 1)) & (c3 > (x1 - 1)) & (c3 < (x2 + 1)) & (c2 > (y1 - 1)) & (c2 < (y2 + 1)) & (c4 > (y1 - 1)) & (c4 < (y2 + 1))) {
+                do Screen.setColor(true);
+                do Screen.drawLine(c1, c2, c3, c2);
+                do Screen.drawLine(c1, c4, c3, c4);
+                do Screen.drawLine(c1, c2, c1, c4);
+                do Screen.drawLine(c3, c2, c3, c4);
+            }
+        }
+        return;
+    }
+
+    method void eraseFriend() {
+        var int c1;
+        var int c2;
+        var int c3;
+        var int c4;
+        if (visibility) {
+            let c1 = max(x-xs, x1);
+            let c2 = max(y-ys, y1);
+            let c3 = min(x+xs, x2);
+            let c4 = min(y+ys, y2);
+            if ((c1 > (x1 - 1)) & (c1 < (x2 + 1)) & (c3 > (x1 - 1)) & (c3 < (x2 + 1)) & (c2 > (y1 - 1)) & (c2 < (y2 + 1)) & (c4 > (y1 - 1)) & (c4 < (y2 + 1))) {
+                do Screen.setColor(false);
+                do Screen.drawLine(c1, c2, c3, c2);
+                do Screen.drawLine(c1, c4, c3, c4);
+                do Screen.drawLine(c1, c2, c1, c4);
+                do Screen.drawLine(c3, c2, c3, c4);
+            }
+        }
+        return;
+    }
+
+    method void move() {
+        if (direction = 0) {
+            do moveUp();
+        }
+        else {
+            if (direction = 1) {
+                do moveRight();
+            }
+            else {
+                if (direction = 2) {
+                    do moveDown();
+                }
+                else {
+                    do moveLeft();
+                }
+            }
+        }
+        return;
+    }
+
+    // Need to check if there is enemy tank in the path.
+    // Will do this later.
+
+    method void moveUp() {
+        var int yn;
+        let yn = y - speed;
+        if ((yn + ys) > (y1 - 1)) {
+            do erase();
+            let y = yn;
+            do draw();
+        }
+        else {
+            do erase();
+            // Bullet no longer exists.
+            do dispose();
+        }
+        return;
+    }
+
+    method void moveDown() {
+        var int yn;
+        let yn = y + speed;
+        if ((yn - ys) < (y2 + 1)) {
+            do erase();
+            let y = yn;
+            do draw();
+        }
+        else {
+            do erase();
+            // Bullet no longer exists.
+            do dispose();
+        }
+        return;
+    }
+
+    method void moveLeft() {
+        var int xn;
+        let xn = x - speed;
+        if ((xn + xs) > (x1 - 1)) {
+            do erase();
+            let x = xn;
+            do draw();
+        }
+        else {
+            do erase();
+            // Bullet no longer exists.
+            do dispose();
+        }
+        return;
+    }
+
+    method void moveRight() {
+        var int xn;
+        let xn = x + speed;
+        if ((xn - xs) < (x2 + 1)) {
+            do erase();
+            let x = xn;
+            do draw();
+        }
+        else {
+            do erase();
+            // Bullet no longer exists.
+            do dispose();
+        }
+        return;
+    }
+
+
+    method boolean isHitPlayerY(Player player) {
+        var int yTopHit;
+        var int yBottomHit;
+        var boolean isHit;
+        let yTopHit = ((player.getY() - player.getYS()) - ys);
+        let yBottomHit = ((player.getY() + player.getYS()) + ys);
+        if ((y > (yTopHit - 1)) & (y < (yBottomHit + 1)))  {
+            let isHit = true;
+        }
+        else {
+            let isHit = false;
+        }
+        return isHit;
+    }
+
+
+    method boolean isHitPlayerX(Player player) {
+        var int xLeftHit;
+        var int xRightHit;
+        var boolean isHit;
+        let xLeftHit = ((player.getX() - player.getXS()) - xs);
+        let xRightHit = ((player.getX() + player.getXS()) + xs);
+        if ((x > (xLeftHit - 1)) & (x < (xRightHit + 1)))  {
+            let isHit = true;
+        }
+        else {
+            let isHit = false;
+        }
+        return isHit;
+    }
+
+    method boolean isHitPlayer(Player player) {
+        var boolean isHit;
+        if ((direction = 0) | (direction = 2)) {
+            let isHit = isHitPlayerY(player);
+        }
+        else {
+            let isHit = isHitPlayerX(player);
+        }
+        return isHit;
+    }
+
+
+
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method int max(int a, int b) {
+        var int maxValue;
+        if (a > b) {
+            let maxValue = a;
+        }
+        else {
+            let maxValue = b;
+        }
+        return maxValue;
+    }
+
+    method int min(int a, int b) {
+        var int minValue;
+        if (a < b) {
+            let minValue = a;
+        }
+        else {
+            let minValue = b;
+        }
+        return minValue;
+    }
+
+
+    method int getX() {
+        return x;
+    }
+
+    method int getY() {
+        return y;
+    }
+
+    method int getType() {
+        return type;
+    }
+
+    method int getXS() {
+        return xs;
+    }
+
+    method int getYS() {
+        return ys;
+    }
+
+
+    method int getSpeed() {
+        return speed;
+    }
+
+    method int getDirection() {
+        return direction;
+    }
+
+    method int getVisibility() {
+        return visibility;
+    }
+
+
+
+    method void setX(int Ax) {
+        let x = Ax;
+        return;
+    }
+
+    method void setY(int Ay) {
+        let y = Ay;
+        return;
+    }
+
+    method void setType(int Atype) {
+        let type = Atype;
+        return;
+    }
+
+    method void setVisibility(boolean Avisibility) {
+        let visibility = Avisibility;
+        return;
+    }
+
+}

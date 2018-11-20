@@ -1,0 +1,924 @@
+function Target.new 0
+push constant 14
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push argument 1
+pop this 1
+push argument 2
+pop this 2
+push argument 3
+pop this 3
+push argument 4
+pop this 4
+push constant 21
+pop this 5
+push constant 21
+pop this 6
+push this 6
+push constant 1
+sub
+push constant 2
+call Math.divide 2
+pop this 8
+push this 5
+push constant 1
+sub
+push constant 2
+call Math.divide 2
+pop this 9
+push argument 5
+pop this 12
+push argument 6
+pop this 13
+push argument 7
+pop this 10
+push argument 8
+pop this 11
+push argument 9
+pop this 7
+push pointer 0
+return
+function Target.draw 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call Target.drawEnemy 1
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push pointer 0
+call Target.drawFriend 1
+pop temp 0
+label IF_END0
+push constant 0
+return
+function Target.erase 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call Target.eraseEnemy 1
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push pointer 0
+call Target.eraseFriend 1
+pop temp 0
+label IF_END0
+push constant 0
+return
+function Target.drawEnemy 4
+push argument 0
+pop pointer 0
+push this 7
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+push this 1
+push this 8
+sub
+push this 12
+call Target.max 3
+pop local 0
+push pointer 0
+push this 2
+push this 9
+sub
+push this 10
+call Target.max 3
+pop local 1
+push pointer 0
+push this 1
+push this 8
+add
+push this 13
+call Target.min 3
+pop local 2
+push pointer 0
+push this 2
+push this 9
+add
+push this 11
+call Target.min 3
+pop local 3
+push local 0
+push this 12
+push constant 1
+sub
+gt
+push local 0
+push this 13
+push constant 1
+add
+lt
+and
+push local 2
+push this 12
+push constant 1
+sub
+gt
+and
+push local 2
+push this 13
+push constant 1
+add
+lt
+and
+push local 1
+push this 10
+push constant 1
+sub
+gt
+and
+push local 1
+push this 11
+push constant 1
+add
+lt
+and
+push local 3
+push this 10
+push constant 1
+sub
+gt
+and
+push local 3
+push this 11
+push constant 1
+add
+lt
+and
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push local 0
+push local 1
+push local 2
+push local 3
+call Screen.drawRectangle 4
+pop temp 0
+label IF_FALSE1
+label IF_FALSE0
+push constant 0
+return
+function Target.eraseEnemy 4
+push argument 0
+pop pointer 0
+push this 7
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+push this 1
+push this 8
+sub
+push this 12
+call Target.max 3
+pop local 0
+push pointer 0
+push this 2
+push this 9
+sub
+push this 10
+call Target.max 3
+pop local 1
+push pointer 0
+push this 1
+push this 8
+add
+push this 13
+call Target.min 3
+pop local 2
+push pointer 0
+push this 2
+push this 9
+add
+push this 11
+call Target.min 3
+pop local 3
+push local 0
+push this 12
+push constant 1
+sub
+gt
+push local 0
+push this 13
+push constant 1
+add
+lt
+and
+push local 2
+push this 12
+push constant 1
+sub
+gt
+and
+push local 2
+push this 13
+push constant 1
+add
+lt
+and
+push local 1
+push this 10
+push constant 1
+sub
+gt
+and
+push local 1
+push this 11
+push constant 1
+add
+lt
+and
+push local 3
+push this 10
+push constant 1
+sub
+gt
+and
+push local 3
+push this 11
+push constant 1
+add
+lt
+and
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push local 0
+push local 1
+push local 2
+push local 3
+call Screen.drawRectangle 4
+pop temp 0
+label IF_FALSE1
+label IF_FALSE0
+push constant 0
+return
+function Target.drawFriend 4
+push argument 0
+pop pointer 0
+push this 7
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+push this 1
+push this 8
+sub
+push this 12
+call Target.max 3
+pop local 0
+push pointer 0
+push this 2
+push this 9
+sub
+push this 10
+call Target.max 3
+pop local 1
+push pointer 0
+push this 1
+push this 8
+add
+push this 13
+call Target.min 3
+pop local 2
+push pointer 0
+push this 2
+push this 9
+add
+push this 11
+call Target.min 3
+pop local 3
+push local 0
+push this 12
+push constant 1
+sub
+gt
+push local 0
+push this 13
+push constant 1
+add
+lt
+and
+push local 2
+push this 12
+push constant 1
+sub
+gt
+and
+push local 2
+push this 13
+push constant 1
+add
+lt
+and
+push local 1
+push this 10
+push constant 1
+sub
+gt
+and
+push local 1
+push this 11
+push constant 1
+add
+lt
+and
+push local 3
+push this 10
+push constant 1
+sub
+gt
+and
+push local 3
+push this 11
+push constant 1
+add
+lt
+and
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push local 0
+push local 1
+push local 2
+push local 1
+call Screen.drawLine 4
+pop temp 0
+push local 0
+push local 3
+push local 2
+push local 3
+call Screen.drawLine 4
+pop temp 0
+push local 0
+push local 1
+push local 0
+push local 3
+call Screen.drawLine 4
+pop temp 0
+push local 2
+push local 1
+push local 2
+push local 3
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE1
+label IF_FALSE0
+push constant 0
+return
+function Target.eraseFriend 4
+push argument 0
+pop pointer 0
+push this 7
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+push this 1
+push this 8
+sub
+push this 12
+call Target.max 3
+pop local 0
+push pointer 0
+push this 2
+push this 9
+sub
+push this 10
+call Target.max 3
+pop local 1
+push pointer 0
+push this 1
+push this 8
+add
+push this 13
+call Target.min 3
+pop local 2
+push pointer 0
+push this 2
+push this 9
+add
+push this 11
+call Target.min 3
+pop local 3
+push local 0
+push this 12
+push constant 1
+sub
+gt
+push local 0
+push this 13
+push constant 1
+add
+lt
+and
+push local 2
+push this 12
+push constant 1
+sub
+gt
+and
+push local 2
+push this 13
+push constant 1
+add
+lt
+and
+push local 1
+push this 10
+push constant 1
+sub
+gt
+and
+push local 1
+push this 11
+push constant 1
+add
+lt
+and
+push local 3
+push this 10
+push constant 1
+sub
+gt
+and
+push local 3
+push this 11
+push constant 1
+add
+lt
+and
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push local 0
+push local 1
+push local 2
+push local 1
+call Screen.drawLine 4
+pop temp 0
+push local 0
+push local 3
+push local 2
+push local 3
+call Screen.drawLine 4
+pop temp 0
+push local 0
+push local 1
+push local 0
+push local 3
+call Screen.drawLine 4
+pop temp 0
+push local 2
+push local 1
+push local 2
+push local 3
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE1
+label IF_FALSE0
+push constant 0
+return
+function Target.move 0
+push argument 0
+pop pointer 0
+push this 4
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call Target.moveUp 1
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push this 4
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push pointer 0
+call Target.moveRight 1
+pop temp 0
+goto IF_END1
+label IF_FALSE1
+push this 4
+push constant 2
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push pointer 0
+call Target.moveDown 1
+pop temp 0
+goto IF_END2
+label IF_FALSE2
+push pointer 0
+call Target.moveLeft 1
+pop temp 0
+label IF_END2
+label IF_END1
+label IF_END0
+push constant 0
+return
+function Target.moveUp 1
+push argument 0
+pop pointer 0
+push this 2
+push this 3
+sub
+pop local 0
+push local 0
+push this 9
+add
+push this 10
+push constant 1
+sub
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call Target.erase 1
+pop temp 0
+push local 0
+pop this 2
+push pointer 0
+call Target.draw 1
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push pointer 0
+call Target.erase 1
+pop temp 0
+push pointer 0
+call Target.dispose 1
+pop temp 0
+label IF_END0
+push constant 0
+return
+function Target.moveDown 1
+push argument 0
+pop pointer 0
+push this 2
+push this 3
+add
+pop local 0
+push local 0
+push this 9
+sub
+push this 11
+push constant 1
+add
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call Target.erase 1
+pop temp 0
+push local 0
+pop this 2
+push pointer 0
+call Target.draw 1
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push pointer 0
+call Target.erase 1
+pop temp 0
+push pointer 0
+call Target.dispose 1
+pop temp 0
+label IF_END0
+push constant 0
+return
+function Target.moveLeft 1
+push argument 0
+pop pointer 0
+push this 1
+push this 3
+sub
+pop local 0
+push local 0
+push this 8
+add
+push this 12
+push constant 1
+sub
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call Target.erase 1
+pop temp 0
+push local 0
+pop this 1
+push pointer 0
+call Target.draw 1
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push pointer 0
+call Target.erase 1
+pop temp 0
+push pointer 0
+call Target.dispose 1
+pop temp 0
+label IF_END0
+push constant 0
+return
+function Target.moveRight 1
+push argument 0
+pop pointer 0
+push this 1
+push this 3
+add
+pop local 0
+push local 0
+push this 8
+sub
+push this 13
+push constant 1
+add
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call Target.erase 1
+pop temp 0
+push local 0
+pop this 1
+push pointer 0
+call Target.draw 1
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push pointer 0
+call Target.erase 1
+pop temp 0
+push pointer 0
+call Target.dispose 1
+pop temp 0
+label IF_END0
+push constant 0
+return
+function Target.isHitPlayerY 3
+push argument 0
+pop pointer 0
+push argument 1
+call Player.getY 1
+push argument 1
+call Player.getYS 1
+sub
+push this 9
+sub
+pop local 0
+push argument 1
+call Player.getY 1
+push argument 1
+call Player.getYS 1
+add
+push this 9
+add
+pop local 1
+push this 2
+push local 0
+push constant 1
+sub
+gt
+push this 2
+push local 1
+push constant 1
+add
+lt
+and
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+not
+pop local 2
+goto IF_END0
+label IF_FALSE0
+push constant 0
+pop local 2
+label IF_END0
+push local 2
+return
+function Target.isHitPlayerX 3
+push argument 0
+pop pointer 0
+push argument 1
+call Player.getX 1
+push argument 1
+call Player.getXS 1
+sub
+push this 8
+sub
+pop local 0
+push argument 1
+call Player.getX 1
+push argument 1
+call Player.getXS 1
+add
+push this 8
+add
+pop local 1
+push this 1
+push local 0
+push constant 1
+sub
+gt
+push this 1
+push local 1
+push constant 1
+add
+lt
+and
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+not
+pop local 2
+goto IF_END0
+label IF_FALSE0
+push constant 0
+pop local 2
+label IF_END0
+push local 2
+return
+function Target.isHitPlayer 1
+push argument 0
+pop pointer 0
+push this 4
+push constant 0
+eq
+push this 4
+push constant 2
+eq
+or
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+push argument 1
+call Target.isHitPlayerY 2
+pop local 0
+goto IF_END0
+label IF_FALSE0
+push pointer 0
+push argument 1
+call Target.isHitPlayerX 2
+pop local 0
+label IF_END0
+push local 0
+return
+function Target.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Target.max 1
+push argument 0
+pop pointer 0
+push argument 1
+push argument 2
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 1
+pop local 0
+goto IF_END0
+label IF_FALSE0
+push argument 2
+pop local 0
+label IF_END0
+push local 0
+return
+function Target.min 1
+push argument 0
+pop pointer 0
+push argument 1
+push argument 2
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 1
+pop local 0
+goto IF_END0
+label IF_FALSE0
+push argument 2
+pop local 0
+label IF_END0
+push local 0
+return
+function Target.getX 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Target.getY 0
+push argument 0
+pop pointer 0
+push this 2
+return
+function Target.getType 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Target.getXS 0
+push argument 0
+pop pointer 0
+push this 8
+return
+function Target.getYS 0
+push argument 0
+pop pointer 0
+push this 9
+return
+function Target.getSpeed 0
+push argument 0
+pop pointer 0
+push this 3
+return
+function Target.getDirection 0
+push argument 0
+pop pointer 0
+push this 4
+return
+function Target.getVisibility 0
+push argument 0
+pop pointer 0
+push this 7
+return
+function Target.setX 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 1
+push constant 0
+return
+function Target.setY 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 2
+push constant 0
+return
+function Target.setType 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 0
+push constant 0
+return
+function Target.setVisibility 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 7
+push constant 0
+return

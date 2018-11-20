@@ -1,0 +1,1587 @@
+function Arena.new 0
+push constant 23
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push argument 1
+pop this 1
+push argument 2
+pop this 2
+push argument 3
+pop this 3
+push this 2
+push constant 1
+sub
+push constant 2
+call Math.divide 2
+pop this 5
+push this 3
+push constant 1
+sub
+push constant 2
+call Math.divide 2
+pop this 6
+push this 1
+push this 6
+sub
+pop this 7
+push this 1
+push this 6
+add
+pop this 8
+push this 0
+push this 5
+sub
+pop this 9
+push this 0
+push this 5
+add
+pop this 10
+push constant 60
+pop this 20
+push constant 75
+pop this 21
+push constant 60
+pop this 22
+push this 0
+push this 1
+push constant 0
+call Player.new 3
+pop this 4
+push constant 5
+pop this 11
+push this 11
+call Array.new 1
+pop this 12
+push this 11
+call Array.new 1
+pop this 13
+push this 11
+call Array.new 1
+pop this 14
+push this 11
+call Array.new 1
+pop this 15
+push pointer 0
+push constant 5
+call Arena.initAllGates 2
+pop temp 0
+push pointer 0
+call Arena.initAllDummyArrows 1
+pop temp 0
+push constant 137
+call Random.setSeed 1
+pop temp 0
+push pointer 0
+return
+function Arena.draw 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Arena.drawArena 1
+pop temp 0
+push this 4
+call Player.draw 1
+pop temp 0
+push constant 0
+return
+function Arena.drawArena 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+push this 5
+sub
+push this 1
+push this 6
+sub
+push this 0
+push constant 15
+sub
+push this 1
+push this 6
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 15
+add
+push this 1
+push this 6
+sub
+push this 0
+push this 5
+add
+push this 1
+push this 6
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push this 5
+sub
+push this 1
+push this 6
+add
+push this 0
+push constant 15
+sub
+push this 1
+push this 6
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 15
+add
+push this 1
+push this 6
+add
+push this 0
+push this 5
+add
+push this 1
+push this 6
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push this 5
+sub
+push this 1
+push this 6
+sub
+push this 0
+push this 5
+sub
+push this 1
+push constant 15
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push this 5
+sub
+push this 1
+push constant 15
+add
+push this 0
+push this 5
+sub
+push this 1
+push this 6
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push this 5
+add
+push this 1
+push this 6
+sub
+push this 0
+push this 5
+add
+push this 1
+push constant 15
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push this 5
+add
+push this 1
+push constant 15
+add
+push this 0
+push this 5
+add
+push this 1
+push this 6
+add
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Arena.initAllDummyArrows 0
+push argument 0
+pop pointer 0
+push this 0
+push this 1
+push this 0
+push this 1
+push constant 0
+push constant 0
+call Arrow.new 6
+pop this 16
+push this 0
+push this 1
+push this 0
+push this 1
+push constant 2
+push constant 0
+call Arrow.new 6
+pop this 17
+push this 0
+push this 1
+push this 0
+push this 1
+push constant 3
+push constant 0
+call Arrow.new 6
+pop this 18
+push this 0
+push this 1
+push this 0
+push this 1
+push constant 1
+push constant 0
+call Arrow.new 6
+pop this 19
+push constant 0
+return
+function Arena.initGateNull 1
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push argument 2
+lt
+not
+if-goto WHILE_END0
+push local 0
+push argument 1
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Arena.initAllGates 0
+push argument 0
+pop pointer 0
+call Random.rand 0
+call Random.setSeed 1
+pop temp 0
+push pointer 0
+push this 0
+push this 7
+push argument 1
+call Arena.initTopGateFull 4
+pop temp 0
+push pointer 0
+push this 0
+push this 8
+push argument 1
+call Arena.initBottomGateFull 4
+pop temp 0
+push pointer 0
+push this 9
+push this 1
+push argument 1
+call Arena.initLeftGateFull 4
+pop temp 0
+push pointer 0
+push this 10
+push this 1
+push argument 1
+call Arena.initRightGateFull 4
+pop temp 0
+push constant 0
+return
+function Arena.initTopGateFull 3
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push this 11
+lt
+not
+if-goto WHILE_END0
+push pointer 0
+push this 21
+call Arena.getRandomType 2
+pop local 1
+push this 22
+call Random.randBoolean 1
+pop local 2
+push local 0
+push this 12
+add
+push local 1
+push argument 1
+push argument 2
+push local 0
+push this 20
+call Math.multiply 2
+sub
+push argument 3
+push constant 2
+push this 9
+push this 10
+push this 7
+push this 8
+push local 2
+call Target.new 10
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Arena.initBottomGateFull 3
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push this 11
+lt
+not
+if-goto WHILE_END0
+push pointer 0
+push this 21
+call Arena.getRandomType 2
+pop local 1
+push this 22
+call Random.randBoolean 1
+pop local 2
+push local 0
+push this 13
+add
+push local 1
+push argument 1
+push argument 2
+push local 0
+push this 20
+call Math.multiply 2
+add
+push argument 3
+push constant 0
+push this 9
+push this 10
+push this 7
+push this 8
+push local 2
+call Target.new 10
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Arena.initLeftGateFull 3
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push this 11
+lt
+not
+if-goto WHILE_END0
+push pointer 0
+push this 21
+call Arena.getRandomType 2
+pop local 1
+push this 22
+call Random.randBoolean 1
+pop local 2
+push local 0
+push this 14
+add
+push local 1
+push argument 1
+push local 0
+push this 20
+call Math.multiply 2
+sub
+push argument 2
+push argument 3
+push constant 1
+push this 9
+push this 10
+push this 7
+push this 8
+push local 2
+call Target.new 10
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Arena.initRightGateFull 3
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push this 11
+lt
+not
+if-goto WHILE_END0
+push pointer 0
+push this 21
+call Arena.getRandomType 2
+pop local 1
+push this 22
+call Random.randBoolean 1
+pop local 2
+push local 0
+push this 15
+add
+push local 1
+push argument 1
+push local 0
+push this 20
+call Math.multiply 2
+add
+push argument 2
+push argument 3
+push constant 3
+push this 9
+push this 10
+push this 7
+push this 8
+push local 2
+call Target.new 10
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Arena.moveTargets 6
+push argument 0
+pop pointer 0
+push constant 0
+pop local 5
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push argument 2
+lt
+not
+if-goto WHILE_END0
+push local 0
+push argument 1
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 1
+call Target.move 1
+pop temp 0
+push local 1
+push this 4
+call Target.isHitPlayer 2
+pop local 4
+push local 4
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 1
+call Target.erase 1
+pop temp 0
+push local 1
+call Target.getVisibility 1
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 1
+call Target.getType 1
+push constant 0
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 1
+pop local 5
+goto IF_END2
+label IF_FALSE2
+push constant 2
+pop local 5
+label IF_END2
+label IF_FALSE1
+push pointer 0
+push argument 1
+push argument 2
+push local 0
+call Arena.replaceTarget 4
+pop temp 0
+label IF_FALSE0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push local 5
+return
+function Arena.replaceTarget 5
+push argument 0
+pop pointer 0
+push argument 3
+push argument 1
+add
+pop pointer 1
+push that 0
+pop local 0
+push argument 3
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 2
+push constant 1
+sub
+push argument 1
+add
+pop pointer 1
+push that 0
+pop local 1
+goto IF_END0
+label IF_FALSE0
+push argument 3
+push constant 1
+sub
+push argument 1
+add
+pop pointer 1
+push that 0
+pop local 1
+label IF_END0
+push local 1
+call Target.getDirection 1
+pop local 2
+push local 2
+push constant 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+push local 1
+call Target.getY 1
+push this 20
+add
+call Target.setY 2
+pop temp 0
+goto IF_END1
+label IF_FALSE1
+push local 2
+push constant 1
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 0
+push local 1
+call Target.getX 1
+push this 20
+sub
+call Target.setX 2
+pop temp 0
+goto IF_END2
+label IF_FALSE2
+push local 2
+push constant 2
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push local 0
+push local 1
+call Target.getY 1
+push this 20
+sub
+call Target.setY 2
+pop temp 0
+goto IF_END3
+label IF_FALSE3
+push local 0
+push local 1
+call Target.getX 1
+push this 20
+add
+call Target.setX 2
+pop temp 0
+label IF_END3
+label IF_END2
+label IF_END1
+call Random.rand 0
+call Random.setSeed 1
+pop temp 0
+push this 22
+call Random.randBoolean 1
+pop local 3
+push pointer 0
+push this 21
+call Arena.getRandomType 2
+pop local 4
+push local 0
+push local 3
+call Target.setVisibility 2
+pop temp 0
+push local 0
+push local 4
+call Target.setType 2
+pop temp 0
+push constant 0
+return
+function Arena.shootTopTarget 6
+push argument 0
+pop pointer 0
+push this 4
+push constant 0
+call Player.changeDirection 2
+pop temp 0
+push constant 0
+pop local 5
+push constant 1000
+neg
+pop local 1
+push constant 1000
+pop local 3
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push this 11
+lt
+not
+if-goto WHILE_END0
+push local 0
+push this 12
+add
+pop pointer 1
+push that 0
+pop local 4
+push local 4
+call Target.getVisibility 1
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 4
+call Target.getY 1
+push local 4
+call Target.getYS 1
+add
+pop local 2
+push local 2
+push local 1
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+pop local 3
+push local 2
+pop local 1
+label IF_FALSE1
+label IF_FALSE0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push local 3
+push constant 1000
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+pop local 5
+push this 16
+push this 4
+call Player.getX 1
+push this 4
+call Player.getY 1
+push this 4
+call Player.getYS 1
+sub
+push this 4
+call Player.getX 1
+push this 7
+push constant 0
+push constant 0
+not
+call Arrow.reset 7
+pop temp 0
+push this 16
+call Arrow.draw 1
+pop temp 0
+goto IF_END2
+label IF_FALSE2
+push local 1
+push this 7
+lt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 0
+pop local 5
+push this 16
+push this 4
+call Player.getX 1
+push this 4
+call Player.getY 1
+push this 4
+call Player.getYS 1
+sub
+push this 4
+call Player.getX 1
+push this 7
+push constant 0
+push constant 0
+not
+call Arrow.reset 7
+pop temp 0
+push this 16
+call Arrow.draw 1
+pop temp 0
+goto IF_END3
+label IF_FALSE3
+push local 3
+push this 12
+add
+pop pointer 1
+push that 0
+pop local 4
+push this 16
+push this 4
+call Player.getX 1
+push this 4
+call Player.getY 1
+push this 4
+call Player.getYS 1
+sub
+push local 4
+call Target.getX 1
+push local 4
+call Target.getY 1
+push local 4
+call Target.getYS 1
+add
+push constant 0
+push constant 0
+not
+call Arrow.reset 7
+pop temp 0
+push this 16
+call Arrow.draw 1
+pop temp 0
+push local 4
+call Target.getType 1
+push constant 0
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push constant 1
+pop local 5
+push local 4
+call Target.erase 1
+pop temp 0
+push local 4
+push constant 0
+call Target.setVisibility 2
+pop temp 0
+goto IF_END4
+label IF_FALSE4
+push constant 2
+pop local 5
+push local 4
+call Target.erase 1
+pop temp 0
+push local 4
+push constant 0
+call Target.setVisibility 2
+pop temp 0
+label IF_END4
+label IF_END3
+label IF_END2
+call Random.rand 0
+call Random.setSeed 1
+pop temp 0
+push local 5
+return
+function Arena.shootBottomTarget 6
+push argument 0
+pop pointer 0
+push this 4
+push constant 2
+call Player.changeDirection 2
+pop temp 0
+push constant 0
+pop local 5
+push constant 1000
+pop local 1
+push constant 1000
+pop local 3
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push this 11
+lt
+not
+if-goto WHILE_END0
+push local 0
+push this 13
+add
+pop pointer 1
+push that 0
+pop local 4
+push local 4
+call Target.getVisibility 1
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 4
+call Target.getY 1
+push local 4
+call Target.getYS 1
+sub
+pop local 2
+push local 2
+push local 1
+lt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+pop local 3
+push local 2
+pop local 1
+label IF_FALSE1
+label IF_FALSE0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push local 3
+push constant 1000
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+pop local 5
+push this 17
+push this 4
+call Player.getX 1
+push this 4
+call Player.getY 1
+push this 4
+call Player.getYS 1
+add
+push this 4
+call Player.getX 1
+push this 8
+push constant 2
+push constant 0
+not
+call Arrow.reset 7
+pop temp 0
+push this 17
+call Arrow.draw 1
+pop temp 0
+goto IF_END2
+label IF_FALSE2
+push local 1
+push this 8
+gt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 0
+pop local 5
+push this 17
+push this 4
+call Player.getX 1
+push this 4
+call Player.getY 1
+push this 4
+call Player.getYS 1
+add
+push this 4
+call Player.getX 1
+push this 8
+push constant 2
+push constant 0
+not
+call Arrow.reset 7
+pop temp 0
+push this 17
+call Arrow.draw 1
+pop temp 0
+goto IF_END3
+label IF_FALSE3
+push local 3
+push this 13
+add
+pop pointer 1
+push that 0
+pop local 4
+push this 17
+push this 4
+call Player.getX 1
+push this 4
+call Player.getY 1
+push this 4
+call Player.getYS 1
+add
+push local 4
+call Target.getX 1
+push local 4
+call Target.getY 1
+push local 4
+call Target.getYS 1
+sub
+push constant 2
+push constant 0
+not
+call Arrow.reset 7
+pop temp 0
+push this 17
+call Arrow.draw 1
+pop temp 0
+push local 4
+call Target.getType 1
+push constant 0
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push constant 1
+pop local 5
+push local 4
+call Target.erase 1
+pop temp 0
+push local 4
+push constant 0
+call Target.setVisibility 2
+pop temp 0
+goto IF_END4
+label IF_FALSE4
+push constant 2
+pop local 5
+push local 4
+call Target.erase 1
+pop temp 0
+push local 4
+push constant 0
+call Target.setVisibility 2
+pop temp 0
+label IF_END4
+label IF_END3
+label IF_END2
+call Random.rand 0
+call Random.setSeed 1
+pop temp 0
+push local 5
+return
+function Arena.shootLeftTarget 6
+push argument 0
+pop pointer 0
+push this 4
+push constant 3
+call Player.changeDirection 2
+pop temp 0
+push constant 0
+pop local 5
+push constant 1000
+neg
+pop local 1
+push constant 1000
+pop local 3
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push this 11
+lt
+not
+if-goto WHILE_END0
+push local 0
+push this 14
+add
+pop pointer 1
+push that 0
+pop local 4
+push local 4
+call Target.getVisibility 1
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 4
+call Target.getX 1
+push local 4
+call Target.getXS 1
+add
+pop local 2
+push local 2
+push local 1
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+pop local 3
+push local 2
+pop local 1
+label IF_FALSE1
+label IF_FALSE0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push local 3
+push constant 1000
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+pop local 5
+push this 18
+push this 4
+call Player.getX 1
+push this 4
+call Player.getXS 1
+sub
+push this 4
+call Player.getY 1
+push this 9
+push this 4
+call Player.getY 1
+push constant 3
+push constant 0
+not
+call Arrow.reset 7
+pop temp 0
+push this 18
+call Arrow.draw 1
+pop temp 0
+goto IF_END2
+label IF_FALSE2
+push local 1
+push this 9
+lt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 0
+pop local 5
+push this 18
+push this 4
+call Player.getX 1
+push this 4
+call Player.getXS 1
+sub
+push this 4
+call Player.getY 1
+push this 9
+push this 4
+call Player.getY 1
+push constant 3
+push constant 0
+not
+call Arrow.reset 7
+pop temp 0
+push this 18
+call Arrow.draw 1
+pop temp 0
+goto IF_END3
+label IF_FALSE3
+push local 3
+push this 14
+add
+pop pointer 1
+push that 0
+pop local 4
+push this 18
+push this 4
+call Player.getX 1
+push this 4
+call Player.getXS 1
+sub
+push this 4
+call Player.getY 1
+push local 4
+call Target.getX 1
+push local 4
+call Target.getXS 1
+add
+push local 4
+call Target.getY 1
+push constant 3
+push constant 0
+not
+call Arrow.reset 7
+pop temp 0
+push this 18
+call Arrow.draw 1
+pop temp 0
+push local 4
+call Target.getType 1
+push constant 0
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push constant 1
+pop local 5
+push local 4
+call Target.erase 1
+pop temp 0
+push local 4
+push constant 0
+call Target.setVisibility 2
+pop temp 0
+goto IF_END4
+label IF_FALSE4
+push constant 2
+pop local 5
+push local 4
+call Target.erase 1
+pop temp 0
+push local 4
+push constant 0
+call Target.setVisibility 2
+pop temp 0
+label IF_END4
+label IF_END3
+label IF_END2
+call Random.rand 0
+call Random.setSeed 1
+pop temp 0
+push local 5
+return
+function Arena.shootRightTarget 6
+push argument 0
+pop pointer 0
+push this 4
+push constant 1
+call Player.changeDirection 2
+pop temp 0
+push constant 0
+pop local 5
+push constant 1000
+pop local 1
+push constant 1000
+pop local 3
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push this 11
+lt
+not
+if-goto WHILE_END0
+push local 0
+push this 15
+add
+pop pointer 1
+push that 0
+pop local 4
+push local 4
+call Target.getVisibility 1
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 4
+call Target.getX 1
+push local 4
+call Target.getXS 1
+sub
+pop local 2
+push local 2
+push local 1
+lt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+pop local 3
+push local 2
+pop local 1
+label IF_FALSE1
+label IF_FALSE0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push local 3
+push constant 1000
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+pop local 5
+push this 19
+push this 4
+call Player.getX 1
+push this 4
+call Player.getXS 1
+add
+push this 4
+call Player.getY 1
+push this 10
+push this 4
+call Player.getY 1
+push constant 1
+push constant 0
+not
+call Arrow.reset 7
+pop temp 0
+push this 19
+call Arrow.draw 1
+pop temp 0
+goto IF_END2
+label IF_FALSE2
+push local 1
+push this 10
+gt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 0
+pop local 5
+push this 19
+push this 4
+call Player.getX 1
+push this 4
+call Player.getXS 1
+add
+push this 4
+call Player.getY 1
+push this 10
+push this 4
+call Player.getY 1
+push constant 1
+push constant 0
+not
+call Arrow.reset 7
+pop temp 0
+push this 19
+call Arrow.draw 1
+pop temp 0
+goto IF_END3
+label IF_FALSE3
+push local 3
+push this 15
+add
+pop pointer 1
+push that 0
+pop local 4
+push this 19
+push this 4
+call Player.getX 1
+push this 4
+call Player.getXS 1
+add
+push this 4
+call Player.getY 1
+push local 4
+call Target.getX 1
+push local 4
+call Target.getXS 1
+sub
+push this 4
+call Player.getY 1
+push constant 1
+push constant 0
+not
+call Arrow.reset 7
+pop temp 0
+push this 19
+call Arrow.draw 1
+pop temp 0
+push local 4
+call Target.getType 1
+push constant 0
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push constant 1
+pop local 5
+push local 4
+call Target.erase 1
+pop temp 0
+push local 4
+push constant 0
+call Target.setVisibility 2
+pop temp 0
+goto IF_END4
+label IF_FALSE4
+push constant 2
+pop local 5
+push local 4
+call Target.erase 1
+pop temp 0
+push local 4
+push constant 0
+call Target.setVisibility 2
+pop temp 0
+label IF_END4
+label IF_END3
+label IF_END2
+call Random.rand 0
+call Random.setSeed 1
+pop temp 0
+push local 5
+return
+function Arena.moveAllTargets 7
+push argument 0
+pop pointer 0
+push constant 1
+pop local 6
+push pointer 0
+push this 12
+push this 11
+call Arena.moveTargets 3
+pop local 2
+push pointer 0
+push this 13
+push this 11
+call Arena.moveTargets 3
+pop local 3
+push pointer 0
+push this 14
+push this 11
+call Arena.moveTargets 3
+pop local 4
+push pointer 0
+push this 15
+push this 11
+call Arena.moveTargets 3
+pop local 5
+push local 2
+push constant 1
+eq
+push local 3
+push constant 1
+eq
+or
+push local 4
+push constant 1
+eq
+or
+push local 5
+push constant 1
+eq
+or
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+pop local 6
+label IF_FALSE0
+push local 6
+return
+function Arena.playerChangeDirection 0
+push argument 0
+pop pointer 0
+push this 4
+push argument 1
+call Player.changeDirection 2
+pop temp 0
+push constant 0
+return
+function Arena.clearArrows 0
+push argument 0
+pop pointer 0
+push this 16
+call Arrow.erase 1
+pop temp 0
+push this 17
+call Arrow.erase 1
+pop temp 0
+push this 18
+call Arrow.erase 1
+pop temp 0
+push this 19
+call Arrow.erase 1
+pop temp 0
+push this 16
+push constant 0
+call Arrow.setVisibility 2
+pop temp 0
+push this 17
+push constant 0
+call Arrow.setVisibility 2
+pop temp 0
+push this 18
+push constant 0
+call Arrow.setVisibility 2
+pop temp 0
+push this 19
+push constant 0
+call Arrow.setVisibility 2
+pop temp 0
+push constant 0
+return
+function Arena.getRandomType 2
+push argument 0
+pop pointer 0
+push constant 100
+call Random.randRange 1
+pop local 0
+push local 0
+push argument 1
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+pop local 1
+goto IF_END0
+label IF_FALSE0
+push constant 1
+pop local 1
+label IF_END0
+push local 1
+return
+function Arena.dispose 2
+push argument 0
+pop pointer 0
+push this 4
+call Player.dispose 1
+pop temp 0
+push this 16
+call Arrow.dispose 1
+pop temp 0
+push this 17
+call Arrow.dispose 1
+pop temp 0
+push this 18
+call Arrow.dispose 1
+pop temp 0
+push this 19
+call Arrow.dispose 1
+pop temp 0
+push constant 0
+pop local 1
+label WHILE_EXP0
+push local 1
+push this 11
+lt
+not
+if-goto WHILE_END0
+push local 1
+push this 12
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
+call Target.dispose 1
+pop temp 0
+push local 1
+push this 13
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
+call Target.dispose 1
+pop temp 0
+push local 1
+push this 14
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
+call Target.dispose 1
+pop temp 0
+push local 1
+push this 15
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
+call Target.dispose 1
+pop temp 0
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push this 12
+call Array.dispose 1
+pop temp 0
+push this 13
+call Array.dispose 1
+pop temp 0
+push this 14
+call Array.dispose 1
+pop temp 0
+push this 15
+call Array.dispose 1
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return

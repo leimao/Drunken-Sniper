@@ -1,0 +1,101 @@
+
+class InfoBoard {
+    
+    field int x, y;
+    field int width, height;
+    field String title;
+    field String subtitle;
+    field String author;
+    field String institute;
+    field String email;
+    field String contact;
+    field String manual1;
+    field String manual2;
+    field String manual3;
+
+    // Some useful constants
+    field int xs;
+    field int ys;
+
+    // Window upper bound
+    field int y1;
+    // Window lower bound
+    field int y2;
+    // Window left bound
+    field int x1;
+    // Window right bound
+    field int x2;
+
+    constructor InfoBoard new(int Ax, int Ay, int Awidth, int Aheight) {
+        let x = Ax;
+        let y = Ay;
+        let width = Awidth;
+        let height = Aheight;
+        let xs = (width - 1) / 2;
+        let ys = (height - 1) / 2;
+
+        let y1 = y - ys;
+        let y2 = y + ys;
+        let x1 = x - xs;
+        let x2 = x + xs;
+
+        let title = "Welcome to Drunken Sniper!";
+        let subtitle = "Game Modified from \"64.0\"";
+        let author = "Lei Mao";
+        let institute = "University of Chicago";
+        let email = "dukeleimao@gmail.com";
+        let contact = "https://leimao.github.io/";
+
+        let manual1 = "Up, Down, Left, Right.";
+        let manual2 = "Enemy: Solid. Friend: Void.";
+        let manual3 = "Kill Enemy and Save Friend.";
+
+        return this;
+    }
+
+    method void draw() {
+        do drawBoard();
+        do Output.moveCursor(1,34);
+        do Output.printString(title);
+        do Output.moveCursor(2,34);
+        do Output.printString(subtitle);
+        do Output.moveCursor(4,34);
+        do Output.printString(author);
+        do Output.moveCursor(5,34);
+        do Output.printString(institute);
+        do Output.moveCursor(6,34);
+        do Output.printString(email);
+        do Output.moveCursor(7,34);
+        do Output.printString(contact);
+        do Output.moveCursor(9,34);
+        do Output.printString(manual1);
+        do Output.moveCursor(10,34);
+        do Output.printString(manual2);
+        do Output.moveCursor(11,34);
+        do Output.printString(manual3);
+        return;
+    }
+
+    method void drawBoard() {
+        do Screen.setColor(true);
+        do Screen.drawLine(x-xs, y-ys, x+xs, y-ys);
+        do Screen.drawLine(x-xs, y+ys, x+xs, y+ys);
+        do Screen.drawLine(x-xs, y-ys, x-xs, y+ys);
+        do Screen.drawLine(x+xs, y-ys, x+xs, y+ys);
+        return;
+    }
+
+    method void dispose() {
+
+        do title.dispose();
+        do subtitle.dispose();
+        do author.dispose();
+        do contact.dispose();
+        do manual1.dispose();
+        do manual2.dispose();
+        do manual3.dispose();
+        
+        do Memory.deAlloc(this);
+        return;
+    }
+}

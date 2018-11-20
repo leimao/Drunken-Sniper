@@ -1,0 +1,115 @@
+
+class Arrow {
+    
+    field int x1, y1, x2, y2;
+    field int length;
+    field int direction;
+    field boolean visibility;
+
+    constructor Arrow new (int Ax1, int Ay1, int Ax2, int Ay2, int Adirection, boolean Avisibility) {
+        let x1 = Ax1;
+        let y1 = Ay1;
+        let x2 = Ax2;
+        let y2 = Ay2;
+        let direction = Adirection;
+        let visibility = Avisibility;
+
+        let length = 4;
+
+        return this;
+    }
+
+
+    method void drawArrowHead(int Ax, int Ay, int Adirection) {
+        var int arrowHeadLength;
+        let arrowHeadLength = 3; 
+        do Screen.setColor(true);
+        if (Adirection = 0) {
+            do Screen.drawLine(Ax, Ay, Ax-arrowHeadLength, Ay+arrowHeadLength);
+            do Screen.drawLine(Ax, Ay, Ax+arrowHeadLength, Ay+arrowHeadLength);
+        }
+        else {
+            if (Adirection = 1) {
+                do Screen.drawLine(Ax, Ay, Ax-arrowHeadLength, Ay-arrowHeadLength);
+                do Screen.drawLine(Ax, Ay, Ax-arrowHeadLength, Ay+arrowHeadLength);
+            }
+            else {
+                if (Adirection = 2) {
+                    do Screen.drawLine(Ax, Ay, Ax-arrowHeadLength, Ay-arrowHeadLength);
+                    do Screen.drawLine(Ax, Ay, Ax+arrowHeadLength, Ay-arrowHeadLength);
+                }
+                else {
+                    do Screen.drawLine(Ax, Ay, Ax+arrowHeadLength, Ay-arrowHeadLength);
+                    do Screen.drawLine(Ax, Ay, Ax+arrowHeadLength, Ay+arrowHeadLength);
+                }
+            }
+        }
+        return;
+    }
+
+    method void eraseArrowHead(int Ax, int Ay, int Adirection) {
+        var int arrowHeadLength;
+        let arrowHeadLength = 3; 
+        do Screen.setColor(false);
+        if (Adirection = 0) {
+            do Screen.drawLine(Ax, Ay, Ax-arrowHeadLength, Ay+arrowHeadLength);
+            do Screen.drawLine(Ax, Ay, Ax+arrowHeadLength, Ay+arrowHeadLength);
+        }
+        else {
+            if (Adirection = 1) {
+                do Screen.drawLine(Ax, Ay, Ax-arrowHeadLength, Ay-arrowHeadLength);
+                do Screen.drawLine(Ax, Ay, Ax-arrowHeadLength, Ay+arrowHeadLength);
+            }
+            else {
+                if (Adirection = 2) {
+                    do Screen.drawLine(Ax, Ay, Ax-arrowHeadLength, Ay-arrowHeadLength);
+                    do Screen.drawLine(Ax, Ay, Ax+arrowHeadLength, Ay-arrowHeadLength);
+                }
+                else {
+                    do Screen.drawLine(Ax, Ay, Ax+arrowHeadLength, Ay-arrowHeadLength);
+                    do Screen.drawLine(Ax, Ay, Ax+arrowHeadLength, Ay+arrowHeadLength);
+                }
+            }
+        }
+        return;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void draw() {
+        if (visibility) {
+            do Screen.setColor(true);
+            do Screen.drawLine(x1, y1, x2, y2);
+            do drawArrowHead(x2, y2, direction);
+        }
+        return;
+    }
+    method void erase() {
+        if (visibility) {
+            do Screen.setColor(false);
+            do Screen.drawLine(x1, y1, x2, y2);
+            do eraseArrowHead(x2, y2, direction);
+        }
+        return;
+    }
+
+    method void setVisibility(boolean Avisibility) {
+        let visibility = Avisibility;
+        return;
+    }
+
+    method void reset(int Ax1, int Ay1, int Ax2, int Ay2, int Adirection, boolean Avisibility) {
+        let x1 = Ax1;
+        let y1 = Ay1;
+        let x2 = Ax2;
+        let y2 = Ay2;
+        let direction = Adirection;
+        let visibility = Avisibility;
+        return;
+    }
+
+
+}

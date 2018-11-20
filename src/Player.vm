@@ -1,0 +1,415 @@
+function Player.new 0
+push constant 8
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push argument 1
+pop this 1
+push argument 2
+pop this 2
+push constant 21
+pop this 3
+push constant 21
+pop this 4
+push constant 4
+pop this 5
+push this 4
+push constant 1
+sub
+push constant 2
+call Math.divide 2
+pop this 6
+push this 3
+push constant 1
+sub
+push constant 2
+call Math.divide 2
+pop this 7
+push pointer 0
+return
+function Player.draw 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Player.drawPlayer 1
+pop temp 0
+push pointer 0
+call Player.drawGun 1
+pop temp 0
+push constant 0
+return
+function Player.changeDirection 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Player.eraseGun 1
+pop temp 0
+push argument 1
+pop this 2
+push pointer 0
+call Player.drawGun 1
+pop temp 0
+push constant 0
+return
+function Player.drawPlayer 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+push this 6
+sub
+push this 1
+push this 7
+sub
+push this 0
+push this 6
+add
+push this 1
+push this 7
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push this 6
+sub
+push this 1
+push this 7
+add
+push this 0
+push this 6
+add
+push this 1
+push this 7
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push this 6
+sub
+push this 1
+push this 7
+sub
+push this 0
+push this 6
+sub
+push this 1
+push this 7
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push this 6
+add
+push this 1
+push this 7
+sub
+push this 0
+push this 6
+add
+push this 1
+push this 7
+add
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Player.drawGun 0
+push argument 0
+pop pointer 0
+push this 2
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call Player.drawGunUp 1
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push this 2
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push pointer 0
+call Player.drawGunRight 1
+pop temp 0
+goto IF_END1
+label IF_FALSE1
+push this 2
+push constant 2
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push pointer 0
+call Player.drawGunDown 1
+pop temp 0
+goto IF_END2
+label IF_FALSE2
+push pointer 0
+call Player.drawGunLeft 1
+pop temp 0
+label IF_END2
+label IF_END1
+label IF_END0
+push constant 0
+return
+function Player.eraseGun 0
+push argument 0
+pop pointer 0
+push this 2
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call Player.eraseGunUp 1
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push this 2
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push pointer 0
+call Player.eraseGunRight 1
+pop temp 0
+goto IF_END1
+label IF_FALSE1
+push this 2
+push constant 2
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push pointer 0
+call Player.eraseGunDown 1
+pop temp 0
+goto IF_END2
+label IF_FALSE2
+push pointer 0
+call Player.eraseGunLeft 1
+pop temp 0
+label IF_END2
+label IF_END1
+label IF_END0
+push constant 0
+return
+function Player.drawGunUp 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+push this 1
+push this 7
+sub
+push constant 1
+sub
+push this 0
+push this 1
+push this 7
+sub
+push this 5
+sub
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Player.eraseGunUp 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 0
+push this 1
+push this 7
+sub
+push constant 1
+sub
+push this 0
+push this 1
+push this 7
+sub
+push this 5
+sub
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Player.drawGunDown 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+push this 1
+push this 7
+add
+push constant 1
+add
+push this 0
+push this 1
+push this 7
+add
+push this 5
+add
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Player.eraseGunDown 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 0
+push this 1
+push this 7
+add
+push constant 1
+add
+push this 0
+push this 1
+push this 7
+add
+push this 5
+add
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Player.drawGunLeft 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+push this 6
+sub
+push constant 1
+sub
+push this 1
+push this 0
+push this 6
+sub
+push this 5
+sub
+push this 1
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Player.eraseGunLeft 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 0
+push this 6
+sub
+push constant 1
+sub
+push this 1
+push this 0
+push this 6
+sub
+push this 5
+sub
+push this 1
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Player.drawGunRight 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+push this 6
+add
+push constant 1
+add
+push this 1
+push this 0
+push this 6
+add
+push this 5
+add
+push this 1
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Player.eraseGunRight 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 0
+push this 6
+add
+push constant 1
+add
+push this 1
+push this 0
+push this 6
+add
+push this 5
+add
+push this 1
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Player.getX 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Player.getY 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Player.getXS 0
+push argument 0
+pop pointer 0
+push this 6
+return
+function Player.getYS 0
+push argument 0
+pop pointer 0
+push this 7
+return
+function Player.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return

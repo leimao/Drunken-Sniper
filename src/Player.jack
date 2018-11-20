@@ -1,0 +1,167 @@
+
+class Player {
+    
+    field int x, y;
+    field int direction;
+    field int height;
+    field int width;
+    field int gunLength;
+
+    // Some useful constants
+    field int xs;
+    field int ys;
+
+    constructor Player new(int Ax, int Ay, int Adirection) {
+        let x = Ax;
+        let y = Ay;
+        let direction = Adirection;
+        let height = 21;
+        let width = 21;
+        let gunLength = 4;
+
+        let xs = (width - 1) / 2;
+        let ys = (height - 1) / 2;
+
+        //do draw();
+
+        return this;
+    }
+
+    method void draw() {
+        do drawPlayer();
+        do drawGun();
+        return;
+    }
+
+    method void changeDirection(int Adirection) {
+        do eraseGun();
+        let direction = Adirection;
+        do drawGun();
+        return;
+    }
+
+    method void drawPlayer() {
+        do Screen.setColor(true);
+        do Screen.drawLine(x-xs, y-ys, x+xs, y-ys);
+        do Screen.drawLine(x-xs, y+ys, x+xs, y+ys);
+        do Screen.drawLine(x-xs, y-ys, x-xs, y+ys);
+        do Screen.drawLine(x+xs, y-ys, x+xs, y+ys);
+        return;
+    }
+
+    method void drawGun() {
+        if (direction = 0) {
+            do drawGunUp();
+        }
+        else {
+            if (direction = 1) {
+                do drawGunRight();
+            }
+            else {
+                if (direction = 2) {
+                    do drawGunDown();
+                }
+                else {
+                    do drawGunLeft();
+                }
+            }
+        }
+        return;
+    }
+
+    method void eraseGun() {
+        if (direction = 0) {
+            do eraseGunUp();
+        }
+        else {
+            if (direction = 1) {
+                do eraseGunRight();
+            }
+            else {
+                if (direction = 2) {
+                    do eraseGunDown();
+                }
+                else {
+                    do eraseGunLeft();
+                }
+            }
+        }
+        return;
+    }
+
+
+
+    method void drawGunUp() {
+        do Screen.setColor(true);
+        do Screen.drawLine(x, (y-ys)-1, x, (y-ys)-gunLength);
+        return;
+    }
+
+    method void eraseGunUp() {
+        do Screen.setColor(false);
+        do Screen.drawLine(x, (y-ys)-1, x, (y-ys)-gunLength);
+        return;
+    }
+
+
+    method void drawGunDown() {
+        do Screen.setColor(true);
+        do Screen.drawLine(x, (y+ys)+1, x, (y+ys)+gunLength);
+        return;
+    }
+
+
+    method void eraseGunDown() {
+        do Screen.setColor(false);
+        do Screen.drawLine(x, (y+ys)+1, x, (y+ys)+gunLength);
+        return;
+    }
+
+    method void drawGunLeft() {
+        do Screen.setColor(true);
+        do Screen.drawLine((x-xs)-1, y, (x-xs)-gunLength, y);
+        return;
+    }
+
+    method void eraseGunLeft() {
+        do Screen.setColor(false);
+        do Screen.drawLine((x-xs)-1, y, (x-xs)-gunLength, y);
+        return;
+    }
+
+    method void drawGunRight() {
+        do Screen.setColor(true);
+        do Screen.drawLine((x+xs)+1, y, (x+xs)+gunLength, y);
+        return;
+    }
+
+    method void eraseGunRight() {
+        do Screen.setColor(false);
+        do Screen.drawLine((x+xs)+1, y, (x+xs)+gunLength, y);
+        return;
+    }
+
+
+    method int getX() {
+        return x;
+    }
+
+    method int getY() {
+        return y;
+    }
+
+    method int getXS() {
+        return xs;
+    }
+
+    method int getYS() {
+        return ys;
+    }
+
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+}
