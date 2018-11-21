@@ -124,37 +124,19 @@ Click ``Run`` -> ``Run``, or simply just press ``F5`` to run the game.
 
 Here is a list of other games programmed in Jack language.
 
-### Pacman
+* [Pacman](https://www.youtube.com/watch?v=uZFkNVWzBWQ)
 
-https://www.youtube.com/watch?v=uZFkNVWzBWQ
+* [Tetronimo](https://www.youtube.com/watch?v=Z-MRlpnzvJs)
 
-### Tetronimo
+* [Tic Tac Toe](https://www.youtube.com/watch?v=1picbaxgVfA)
 
-https://www.youtube.com/watch?v=Z-MRlpnzvJs
+* [Mines](https://www.youtube.com/watch?v=SpAAYjXAtJ0)
 
+* [Ну, погоди!](https://www.youtube.com/watch?v=9obkAZ_t-OA)
 
-### Tic Tac Toe
+* [Hackenstein 3D](https://www.youtube.com/watch?v=inFJ5EyOhpM)
 
-https://www.youtube.com/watch?v=1picbaxgVfA
-
-
-### Mines
-
-https://www.youtube.com/watch?v=SpAAYjXAtJ0
-
-
-### Ну, погоди!
-
-https://www.youtube.com/watch?v=9obkAZ_t-OA
-
-### Hackenstein 3D
-
-https://www.youtube.com/watch?v=inFJ5EyOhpM
-
-
-### Bichromia
-
-https://www.youtube.com/watch?v=c-J7lwKWDN8
+* [Bichromia](https://www.youtube.com/watch?v=c-J7lwKWDN8)
 
 
 ## To-Do List
