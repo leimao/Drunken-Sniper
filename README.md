@@ -80,7 +80,7 @@ Kill enemy and don't kill friend. Enemy is solid box and friend is void box.
 
 ### When You Win
 
-You can never actuall win. Kill as many enemies as you can!
+You can never actually win. Kill as many enemies as you can!
 
 ### When You Lose
 
